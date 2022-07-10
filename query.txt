@@ -1,0 +1,85 @@
+########### SQL ##########
+show database;
+create database [database_name];
+use [database_name];
+drop database [database_name];
+
+create table [table_name];
+(id int primary key,
+uname varchar(20) not null,
+pwd varchar(20) not null,
+type varchar(10) not null);
+
+show tables;
+drop table [table_name];
+desc [table_name];  ##########description of table
+alter table [curent_table_name] rename to [new_name]; ##############rename table
+
+insert into [table_name] (id, name, number) values(1, 'admin', '123456', 'admin');  #######insert data in order
+insert into [table_name] values(2,'admin','123456','admin'); 
+
+select * from [table_name];     #######see data in table#########
+
+alter table [table_name] add [column data_type]
+
+update [table_name] set [column = 'value'] where [column = 'value'];
+update [table_name] set [column = 'value'], [column='data'] where [column='value'];
+
+delete from [table_name] where [column='value'];  ########remove_full_row
+
+select * from [table_name] where [column='value']; ########################select_all_column
+select [colomn], [column2] from [table_name] where [column='value']; #########select_columns
+select [column] as "OTHRENAME" from [table_name];        ##################select_columns_and_show_other_name
+
+select distinct([column_name]) from data; ###########don't_repeat_values
+select * from [table_name] where [column_name ='value'] and [column_name ='value']; ###and_opertor_condition
+select * from [table_name] where [column_name ='value'] or [column_nname ='value'];  ###or_opertor
+
+select * from [table_name] where [column_name <= 1];  #######integer_condition
+select * form [table_name] where [column_name] between 2 and 5; ##########range include(2,5also)
+select * from [table_name] where [column_name] in(1,2); ###############select_who_avialable_in
+
+select * from [table_name] where [column] limit 3; #########select_upper_three_using_limit
+select * from [table_name] where [column] limit 2 offset 2; #########select_two_value_instead_of_upper_two_values
+
+select * from [table_name] order by [column]; #########################show_values_in_asending_order
+select * from [table_name] order by [column] desc #####################show_values in desending order
+
+select * from [table_name] where [column] like '%[character]'; ###########show_values_who_end_with_[character]
+select * from [table_name] where [column] like '[character]%'; ###########show_values_who_start_with_[character]
+select * form [table_name] where [column] like '_[character]%';##############second_character_this_[character]
+
+select * from [table_name] where [column] like '%[charcter]_'; #########last_second_character_this_[character]
+
+select SUM([column]) from [table_name]; ############calculate_sum_of_integer_column
+select SUM([column]) as 'Total' from [table_name];
+select AVG([column]) as 'Average' from [table_name];
+select COUNT([column]) as 'Count' from [table_name];
+select MIN([column]) as 'Minimum' from [table_name];
+select [column] from [table_name] where [column = (select MIN([column]) from data)]; #####show_particular_column_value_behalf_of_MIN_funtion
+select MAX([column]) as 'Maximum' from [table_name];
+select [column] from [table_name] where [column = (select MAX([column]) from data)]; #####show_particular_column_value_behalf_of_MAX_funtion
+
+###############create_another_table_and_connect_to_first_table_using_foreign_key###########
+create table [table2_name](
+		column1, column2, column3,
+		foreign key(column3) references [table_name]
+);
+
+#######join_two_table######
+
+select [table.column],[table.column], [table2.column] from [table] inner join [table2] where [table.column = table2.column]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
